@@ -10,4 +10,14 @@ function getComputerChoice(){
     }
 }
 
-
+function getHumanChoice(){
+    let choice; 
+    while(true) {
+        choice = prompt("Choose Rock, Paper, or Scissors").toUpperCase(); 
+        if (choice == "ROCK" || choice == "PAPER" || choice == "SCISSORS"){
+            return choice; 
+        } else {
+            alert("Invalid choice. Please enter Rock, Paper, or Scissors.");
+        } 
+    }
+}
