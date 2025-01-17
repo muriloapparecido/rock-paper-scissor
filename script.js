@@ -21,3 +21,21 @@ function getHumanChoice(){
         } 
     }
 }
+
+
+let humanScore = 0; 
+let computerScore = 0; 
+
+function playRound(humanChoice, computerChoice){
+    if (humanChoice == computerChoice){
+        console.log("It's a tie!");
+    } else if (humanChoice == "ROCK" && computerChoice == "SCISSORS" || 
+        humanChoice =="PAPER" && computerChoice == "ROCK" ||
+        humanChoice == "SCISSORS" && computerChoice == "PAPER"){
+        humanScore++; 
+        console.log(`You Win! ${humanChoice} beats %{computerChoice}!`);
+    } else {
+        console.log(`You lose! ${computerChoice} beats ${playerChoice}!`);
+        computerScore++; 
+    }
+}
