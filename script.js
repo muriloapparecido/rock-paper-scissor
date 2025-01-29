@@ -11,15 +11,23 @@ function getComputerChoice(){
 }
 
 function getHumanChoice(){
-    let choice; 
-    while(true) {
-        choice = prompt("Choose Rock, Paper, or Scissors").toUpperCase(); 
-        if (choice == "ROCK" || choice == "PAPER" || choice == "SCISSORS"){
-            return choice; 
-        } else {
-            alert("Invalid choice. Please enter Rock, Paper, or Scissors.");
-        } 
-    }
+    const rockButton = document.querySelector("#rock"); 
+
+    rockButton.addEventListener("click", () => {
+        console.log('rock'); 
+    });
+
+    const paperButton = document.querySelector("#paper"); 
+
+    paperButton.addEventListener("click", () => {
+        console.log('paper'); 
+    });
+
+    const scissorsButton = document.querySelector("#scissors"); 
+
+    scissorsButton.addEventListener("click", () => {
+        console.log('scissors'); 
+    });
 }
 
 function playGame(){
@@ -66,3 +74,5 @@ function playGame(){
     }
 
 }
+
+getHumanChoice(); 
