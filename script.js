@@ -1,78 +1,105 @@
+// Select the container element
+const container = document.querySelector("#container");
+
+// Create elements dynamically
+const round = document.createElement("div"); 
+const game = document.createElement("div"); 
+const score = document.createElement("div"); 
+
+// Append elements to the container
+container.appendChild(round);
+container.appendChild(game);
+container.appendChild(score);
+
+// Function to get a random choice for the computer
 function getComputerChoice(){
     let randomNumber = Math.floor(Math.random() * 3);
     switch(randomNumber){
         case 0:
-            return 'rock';
+            return 'ROCK';
         case 1:
-            return 'paper';
+            return 'PAPER';
         case 2:
-            return 'scissors';
+            return 'SCISSORS';
     }
 }
 
+// Global variables
+let humanChoice = ""; 
+let roundNumber = 1; 
+let humanScore = 0;
+let computerScore = 0;
+
+// Function to set up event listeners 
 function getHumanChoice(){
     const rockButton = document.querySelector("#rock"); 
 
     rockButton.addEventListener("click", () => {
-        console.log('rock'); 
+        humanChoice = 'ROCK'; 
+        playRound(); 
     });
 
     const paperButton = document.querySelector("#paper"); 
 
     paperButton.addEventListener("click", () => {
-        console.log('paper'); 
+        humanChoice = 'PAPER'; 
+        playRound(); 
     });
 
     const scissorsButton = document.querySelector("#scissors"); 
 
     scissorsButton.addEventListener("click", () => {
-        console.log('scissors'); 
+        humanChoice = 'SCISSORS'; 
+        playRound(); 
     });
 }
 
-function playGame(){
-    
-    function playRound(humanChoice, computerChoice){
-        if (humanChoice == computerChoice){
-            console.log("It's a tie!");
-        } else if (humanChoice == "ROCK" && computerChoice == "SCISSORS" || 
-            humanChoice =="PAPER" && computerChoice == "ROCK" ||
-            humanChoice == "SCISSORS" && computerChoice == "PAPER"){
-            humanScore++; 
-            console.log(`You Win! ${humanChoice} beats %{computerChoice}!`);
-        } else {
-            console.log(`You lose! ${computerChoice} beats ${playerChoice}!`);
-            computerScore++; 
-        }
-    }
+//Simulate a round
+function playRound(){
+    let computerChoice = getComputerChoice(); 
 
-    for (let i = 0; i < 5; i++){
-        console.log(`Round ${i + 1}`); 
-        let humanScore = 0; 
-        let computerScore = 0; 
+    //Update round number 
+    round.textContent = `Round ${roundNumber}`; 
+    roundNumber++; 
 
-        const winner = playRound(humanChoice, computerChoice);
-
-        // Update scores
-        if (winner === "human") {
-            humanScore++;
-        } else if (winner === "computer") {
-            computerScore++;
-        }
-
-        // Display current scores
-        console.log(`Current Score: Human - ${humanScore}, Computer - ${computerScore}`);
-    }
-
-    // Declare the final winner
-    if (humanScore > computerScore) {
-        console.log("Congratulations! You won the game!");
-    } else if (computerScore > humanScore) {
-        console.log("You lost the game. Better luck next time!");
+    //Determine winner
+    if (humanChoice == computerChoice){
+        game.textContent = "It's a tie!";
+    } else if (
+        (humanChoice == "ROCK" && computerChoice == "SCISSORS") || 
+        (humanChoice =="PAPER" && computerChoice == "ROCK") ||
+        (humanChoice == "SCISSORS" && computerChoice == "PAPER")
+    ){
+        humanScore++; 
+        game.textContent = `You Win! ${humanChoice} beats ${computerChoice}!`;
     } else {
-        console.log("It's a tie overall!");
+        game.textContent = `You lose! ${computerChoice} beats ${humanChoice}!`;
+        computerScore++; 
     }
 
+    updateScore(); 
 }
 
-getHumanChoice(); 
+//Function to update the score
+function updateScore(){
+    score.textContent = `Current Score: You - ${humanScore}, Computer - ${computerScore}`;
+
+    if (humanScore >= 5) {
+        alert("Congratulations! You won the game!");
+        resetGame();
+    } else if (computerScore >= 5) {
+        alert("You lost the game. Better luck next time!");
+        resetGame();
+    }
+}
+
+//Function to reset the game
+function resetGame() {
+    humanScore = 0;
+    computerScore = 0;
+    roundNumber = 1;
+    score.textContent = "Current Score: You - 0, Computer - 0";
+    game.textContent = "Make a choice!";
+}
+
+getHumanChoice()
