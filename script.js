@@ -10,6 +10,7 @@ container.style.gap = "20px";
 
 document.body.style.margin = "0";
 
+//Create title
 const title = document.createElement("h1"); 
 title.textContent = "Rock, Paper, Scissors Simulator";
 title.style.position = "absolute";  
@@ -22,24 +23,28 @@ title.style.marginTop = "0";
 title.style.backgroundColor = "#FFF8E7"; 
 container.appendChild(title); 
 
+// Create elements dynamically
+const round = document.createElement("h4"); 
+const game = document.createElement("h4"); 
+const score = document.createElement("h4"); 
+
+//Style the text
+
+
+// Append elements to the container
+container.appendChild(round);
+container.appendChild(game);
+container.appendChild(score);
+
+//Styles the three buttons
 const rps = document.querySelector("#rps"); 
 rps.style.display = "flex"; 
 rps.style.width = "500px"; 
 rps.style.justifyContent = "center";
 rps.style.gap = "100px"; 
 rps.style.height = "100px";
+container.appendChild(rps); 
 
-
-
-// Create elements dynamically
-const round = document.createElement("h4"); 
-const game = document.createElement("h4"); 
-const score = document.createElement("h4"); 
-
-// Append elements to the container
-container.appendChild(round);
-container.appendChild(game);
-container.appendChild(score);
 
 // Function to get a random choice for the computer
 function getComputerChoice(){
