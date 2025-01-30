@@ -1,5 +1,24 @@
 // Select the container element
 const container = document.querySelector("#container");
+container.style.display = "flex"; 
+container.style.flexDirection = "column"; 
+container.style.justifyContent = "center"; 
+container.style.alignItems = "center"; 
+container.style.height = "100vh";
+container.style.backgroundColor = "#C4A484";
+container.style.gap = "20px"; 
+
+document.body.style.margin = "0";
+
+const rps = document.querySelector("#rps"); 
+rps.style.display = "flex"; 
+
+rps.style.width = "500px"; 
+rps.style.justifyContent = "center";
+rps.style.gap = "100px"; 
+rps.style.height = "100px";
+
+
 
 // Create elements dynamically
 const round = document.createElement("div"); 
@@ -33,6 +52,9 @@ let computerScore = 0;
 // Function to set up event listeners 
 function getHumanChoice(){
     const rockButton = document.querySelector("#rock"); 
+    rockButton.style.width = "100px";
+    rockButton.style.border = "2px solid black";
+    rockButton.style.borderRadius = "5px";
 
     rockButton.addEventListener("click", () => {
         humanChoice = 'ROCK'; 
@@ -40,6 +62,9 @@ function getHumanChoice(){
     });
 
     const paperButton = document.querySelector("#paper"); 
+    paperButton.style.width = "100px";
+    paperButton.style.border = "2px solid black";
+    paperButton.style.borderRadius = "5px";
 
     paperButton.addEventListener("click", () => {
         humanChoice = 'PAPER'; 
@@ -47,6 +72,9 @@ function getHumanChoice(){
     });
 
     const scissorsButton = document.querySelector("#scissors"); 
+    scissorsButton.style.width = "100px";
+    scissorsButton.style.border = "2px solid black"
+    scissorsButton.style.borderRadius = "5px";
 
     scissorsButton.addEventListener("click", () => {
         humanChoice = 'SCISSORS'; 
