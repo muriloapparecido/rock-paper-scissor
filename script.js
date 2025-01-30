@@ -10,9 +10,20 @@ container.style.gap = "20px";
 
 document.body.style.margin = "0";
 
+const title = document.createElement("h1"); 
+title.textContent = "Rock, Paper, Scissors Simulator";
+title.style.position = "absolute";  
+title.style.top = "0";
+title.style.padding = "40px"; 
+title.style.width = "100%"; 
+title.style.textAlign = "center"; 
+title.style.borderBottom = "2px solid black"; 
+title.style.marginTop = "0";
+title.style.backgroundColor = "#FFF8E7"; 
+container.appendChild(title); 
+
 const rps = document.querySelector("#rps"); 
 rps.style.display = "flex"; 
-
 rps.style.width = "500px"; 
 rps.style.justifyContent = "center";
 rps.style.gap = "100px"; 
@@ -21,9 +32,9 @@ rps.style.height = "100px";
 
 
 // Create elements dynamically
-const round = document.createElement("div"); 
-const game = document.createElement("div"); 
-const score = document.createElement("div"); 
+const round = document.createElement("h4"); 
+const game = document.createElement("h4"); 
+const score = document.createElement("h4"); 
 
 // Append elements to the container
 container.appendChild(round);
